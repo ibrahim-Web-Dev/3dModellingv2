@@ -1,0 +1,4 @@
+{
+  "_comment": "Her key bir frame indexi (0-239). Her frame için hotspot listesi. x ve y 0-1 arasi oran (sol-ust kosen 0,0). Calibration modunda tarayicida tiklanarak doldurulur.",
+  "0": []
+}
