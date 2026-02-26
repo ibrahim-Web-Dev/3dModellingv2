@@ -13,7 +13,7 @@ function App() {
 
     // hotspots.json'ı yükle
     useEffect(() => {
-        fetch('/hotspots.json')
+        fetch(import.meta.env.BASE_URL + 'hotspots.json')
             .then(r => r.json())
             .then(data => setHotspots(data))
             .catch(err => console.warn('hotspots.json yüklenemedi:', err))

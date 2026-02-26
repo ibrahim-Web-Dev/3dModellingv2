@@ -9,7 +9,7 @@ const HOTSPOT_DELAY_MS = 400;
 function frameUrl(index) {
     const i = Math.round(index); // HER ZAMAN integer
     const padded = String(i).padStart(3, '0');
-    return `/frames/frame_${padded}.webp`;
+    return `${import.meta.env.BASE_URL}frames/frame_${padded}.webp`;
 }
 
 /**
