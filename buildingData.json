@@ -1,0 +1,29 @@
+{
+    "255,0,0": {
+        "id": "A_BLOK",
+        "name": "A Blok — Gökdelen",
+        "floors": 40,
+        "soldPercent": 80,
+        "status": "Satışta",
+        "color": "rgba(255, 80, 0, 0.45)",
+        "description": "40 katlı rezidans kulesi, deniz manzaralı daireler."
+    },
+    "0,255,0": {
+        "id": "B_BLOK",
+        "name": "B Blok — Konut",
+        "floors": 20,
+        "soldPercent": 45,
+        "status": "Satışta",
+        "color": "rgba(0, 220, 80, 0.45)",
+        "description": "Aile tipi daireler, bahçe katları mevcut."
+    },
+    "0,0,255": {
+        "id": "C_BLOK",
+        "name": "C Blok — Sosyal Tesis",
+        "floors": 5,
+        "soldPercent": 100,
+        "status": "Teslim Edildi",
+        "color": "rgba(0, 120, 255, 0.45)",
+        "description": "Havuz, spor salonu ve toplantı alanları."
+    }
+}
