@@ -1027,29 +1027,45 @@ body {
 
 /* ══════════════════════════════════════════════════
    MOBILE RESPONSIVE  (≤ 640px)
-   Layout: üst %50 = viewer, alt %50 = sidebar
+   Layout: viewer sticky üstte, sidebar tam boy sayfa scroll
 ══════════════════════════════════════════════════ */
 @media (max-width: 640px) {
 
-    /* ── Ana container → dikey flex ── */
+    /* ── Sayfa scroll'unu aç ── */
+    html, body {
+        height: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    #root {
+        height: auto;
+    }
+
+    /* ── Ana container → dikey flex, auto yükseklik ── */
     .app-container {
         display: flex;
         flex-direction: column;
+        height: auto;
+        overflow: visible;
     }
 
-    /* ── Viewer → üst %60 ── */
+    /* ── Viewer → sticky, scroll'da yukarıda sabit kalır ── */
     .viewer-container {
+        position: sticky;
+        top: 0;
+        z-index: 10;
         height: 60dvh;
         flex: 0 0 60dvh;
         width: 100%;
     }
 
-    /* ── Sidebar → alt %40, daima açık ── */
+    /* ── Sidebar → tam boy, sayfa scroll ile görünür ── */
     .sidebar {
         position: relative;
         width: 100%;
-        height: 40dvh;
-        flex: 0 0 40dvh;
+        height: auto;
+        flex: none;
         top: auto;
         bottom: auto;
         left: auto;
@@ -1059,6 +1075,13 @@ body {
         border-top: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 0;
         box-shadow: none;
+        overflow: visible;
+    }
+
+    /* İç scroll kaldır — sayfa scroll yönetir */
+    .sidebar-list {
+        overflow: visible;
+        height: auto;
     }
 
     /* Toggle butonu gizle — sidebar daima açık */
@@ -1098,10 +1121,10 @@ body {
         height: 12px;
     }
 
-    /* ── InfoCard → sidebar alanını kapla ── */
+    /* ── InfoCard → tam ekran modal ── */
     .info-card {
         position: fixed;
-        top: 60dvh;
+        top: 0;
         left: 0;
         right: 0;
         bottom: 0;
@@ -1109,7 +1132,7 @@ body {
         max-width: 100%;
         min-width: unset;
         border-radius: 0;
-        padding: 16px 16px 24px;
+        padding: 20px 16px 32px;
         overflow-y: auto;
         z-index: 700;
     }
