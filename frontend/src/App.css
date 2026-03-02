@@ -1053,7 +1053,7 @@ body {
 
 /* ══════════════════════════════════════════════════
    MOBILE RESPONSIVE  (≤ 640px)
-   Layout: üst 60dvh = viewer, alt 40dvh = sidebar (kendi scroll)
+   Layout: üst 50dvh = viewer, alt 50dvh = sidebar (kendi scroll)
 ══════════════════════════════════════════════════ */
 @media (max-width: 640px) {
 
@@ -1065,20 +1065,20 @@ body {
         overflow: hidden;
     }
 
-    /* ── Viewer → üst %60, sabit ── */
+    /* ── Viewer → üst %50, sabit ── */
     .viewer-container {
-        height: 60dvh;
-        flex: 0 0 60dvh;
+        height: 50dvh;
+        flex: 0 0 50dvh;
         width: 100%;
         position: relative;
     }
 
-    /* ── Sidebar → alt %40, kendi içinde scroll ── */
+    /* ── Sidebar → alt %50, kendi içinde scroll ── */
     .sidebar {
         position: relative;
         width: 100%;
-        height: 40dvh;
-        flex: 0 0 40dvh;
+        height: 50dvh;
+        flex: 0 0 50dvh;
         top: auto;
         bottom: auto;
         left: auto;
@@ -1089,10 +1089,14 @@ body {
         border-radius: 0;
         box-shadow: none;
         overflow: hidden;
+        display: flex;
+        flex-direction: column;
     }
 
     /* Sidebar listesi kendi içinde scroll */
     .sidebar-list {
+        flex: 1;
+        min-height: 0;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
     }
