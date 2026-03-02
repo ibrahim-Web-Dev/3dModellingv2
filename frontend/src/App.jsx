@@ -1,3 +1,4 @@
+// Version 2026-03-02-13:54
 import { useState, useEffect } from 'react'
 import './App.css'
 import ImageSequenceViewer from './components/ImageSequenceViewer'
