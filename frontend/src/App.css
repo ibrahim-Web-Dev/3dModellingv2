@@ -1053,45 +1053,32 @@ body {
 
 /* ══════════════════════════════════════════════════
    MOBILE RESPONSIVE  (≤ 640px)
-   Layout: viewer sticky üstte, sidebar tam boy sayfa scroll
+   Layout: üst 60dvh = viewer, alt 40dvh = sidebar (kendi scroll)
 ══════════════════════════════════════════════════ */
 @media (max-width: 640px) {
 
-    /* ── Sayfa scroll'unu aç ── */
-    html, body {
-        height: auto;
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
-
-    #root {
-        height: auto;
-    }
-
-    /* ── Ana container → dikey flex, auto yükseklik ── */
+    /* ── Ana container → dikey flex, tam yükseklik ── */
     .app-container {
         display: flex;
         flex-direction: column;
-        height: auto;
-        overflow: visible;
+        height: 100dvh;
+        overflow: hidden;
     }
 
-    /* ── Viewer → sticky, scroll'da yukarıda sabit kalır ── */
+    /* ── Viewer → üst %60, sabit ── */
     .viewer-container {
-        position: sticky;
-        top: 0;
-        z-index: 10;
         height: 60dvh;
         flex: 0 0 60dvh;
         width: 100%;
+        position: relative;
     }
 
-    /* ── Sidebar → tam boy, sayfa scroll ile görünür ── */
+    /* ── Sidebar → alt %40, kendi içinde scroll ── */
     .sidebar {
         position: relative;
         width: 100%;
-        height: auto;
-        flex: none;
+        height: 40dvh;
+        flex: 0 0 40dvh;
         top: auto;
         bottom: auto;
         left: auto;
@@ -1101,13 +1088,13 @@ body {
         border-top: 1px solid rgba(255, 255, 255, 0.08);
         border-radius: 0;
         box-shadow: none;
-        overflow: visible;
+        overflow: hidden;
     }
 
-    /* İç scroll kaldır — sayfa scroll yönetir */
+    /* Sidebar listesi kendi içinde scroll */
     .sidebar-list {
-        overflow: visible;
-        height: auto;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     /* Toggle butonu gizle — sidebar daima açık */

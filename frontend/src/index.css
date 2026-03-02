@@ -36,11 +36,3 @@ button {
   cursor: pointer;
 }
 
-@media (max-width: 640px) {
-  html,
-  body,
-  #root {
-    height: auto;
-    overflow: visible;
-  }
-}
