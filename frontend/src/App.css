@@ -835,20 +835,28 @@ body {
 .sidebar-sort:hover { border-color: rgba(232, 184, 93, 0.25); }
 
 /* ── Daire listesi ────────────────────────────────────── */
-.sidebar-list {
+/* Tümü/A/B/C'den itibaren tüm içerik scroll edilebilir alan */
+.sidebar-scroll-body {
     flex: 1;
+    min-height: 0;
     overflow-y: auto;
-    padding: 8px 12px 24px;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 24px;
+}
+
+.sidebar-scroll-body::-webkit-scrollbar { width: 3px; }
+.sidebar-scroll-body::-webkit-scrollbar-track { background: transparent; }
+.sidebar-scroll-body::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 99px;
+}
+
+.sidebar-list {
+    padding: 0 12px;
     display: flex;
     flex-direction: column;
     gap: 8px;
-}
-
-.sidebar-list::-webkit-scrollbar { width: 3px; }
-.sidebar-list::-webkit-scrollbar-track { background: transparent; }
-.sidebar-list::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.07);
-    border-radius: 99px;
 }
 
 .sidebar-empty {
@@ -1093,11 +1101,8 @@ body {
         flex-direction: column;
     }
 
-    /* Sidebar listesi kendi içinde scroll */
-    .sidebar-list {
-        flex: 1;
-        min-height: 0;
-        overflow-y: auto;
+    /* Scroll body touch desteği */
+    .sidebar-scroll-body {
         -webkit-overflow-scrolling: touch;
     }
 

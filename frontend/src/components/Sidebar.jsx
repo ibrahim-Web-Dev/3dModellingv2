@@ -162,6 +162,8 @@ export default function Sidebar({ open, onClose, onSelectApartment, externalBuil
                     <button className="sidebar-close-btn" onClick={() => onClose(false)}>✕</button>
                 </div>
 
+                <div className="sidebar-scroll-body">
+
                 {/* Bina seçici */}
                 <div className="bina-selector-wrap">
                     {BUILDINGS.map(b => (
@@ -292,6 +294,7 @@ export default function Sidebar({ open, onClose, onSelectApartment, externalBuil
                         );
                     })}
                 </div>
+                </div>{/* sidebar-scroll-body */}
             </aside>
         </>
     );
