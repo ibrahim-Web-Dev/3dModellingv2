@@ -81,7 +81,7 @@ export default function Sidebar({ open, onClose, onSelectApartment, externalBuil
     const [sqmRange, setSqmRange] = useState([SQM_MIN, SQM_MAX]);
     const [floorRange, setFloorRange] = useState([FLOOR_MIN, FLOOR_MAX]);
     const [roomsRange, setRoomsRange] = useState([ROOMS_MIN, ROOMS_MAX]);
-    const [showFilters, setShowFilters] = useState(true);
+    const [showFilters, setShowFilters] = useState(() => window.innerWidth > 640);
 
     // Dışarıdan bina seçimi gelirse uygula
     useEffect(() => {

@@ -18,7 +18,7 @@ function getAvailable(buildingId) {
     return { available: avail.length, total: all.length };
 }
 
-const TOTAL_FRAMES = 120;
+const TOTAL_FRAMES = 360;
 const PX_PER_FRAME = 4;
 const HOTSPOT_DELAY_MS = 400;
 
@@ -40,11 +40,13 @@ export default function ImageSequenceViewer({
     const [frameIndex, setFrameIndex] = useState(0);
     const [showHotspots, setShowHotspots] = useState(false);
     const [loadedCount, setLoadedCount] = useState(0);
+    const [firstFrameReady, setFirstFrameReady] = useState(false);
     const [hoveredBuilding, setHoveredBuilding] = useState(null);
 
     const frameRef = useRef(0);
     const isDragging = useRef(false);
     const lastX = useRef(0);
+    const touchStartRef = useRef({ x: 0, y: 0 });
     const velocityRef = useRef(0);
     const inertiaRafRef = useRef(null);
     const animateRafRef = useRef(null);
@@ -62,12 +64,27 @@ export default function ImageSequenceViewer({
 
     // ── Preload frames ────────────────────────────────────────────────────
     useEffect(() => {
-        let loaded = 0;
-        for (let i = 0; i < TOTAL_FRAMES; i++) {
-            const img = new Image();
-            img.onload = () => { loaded++; setLoadedCount(loaded); };
-            img.src = frameUrl(i);
-        }
+        // Frame 0'ı önce yükle — yüklenince loading ekranı kalkar
+        const first = new Image();
+        first.onload = () => { setFirstFrameReady(true); setLoadedCount(1); };
+        first.onerror = () => setFirstFrameReady(true);
+        first.src = frameUrl(0);
+
+        // Geri kalanları 10'arlı gruplar halinde arka planda yükle
+        const BATCH = 10;
+        let batch = 0;
+        const loadBatch = () => {
+            const start = 1 + batch * BATCH;
+            if (start >= TOTAL_FRAMES) return;
+            for (let i = start; i < Math.min(start + BATCH, TOTAL_FRAMES); i++) {
+                const img = new Image();
+                img.onload = () => setLoadedCount(prev => prev + 1);
+                img.src = frameUrl(i);
+            }
+            batch++;
+            setTimeout(loadBatch, 200);
+        };
+        setTimeout(loadBatch, 100);
     }, []);
 
     // ── Load mask on frame change ─────────────────────────────────────────
@@ -249,6 +266,7 @@ export default function ImageSequenceViewer({
     const onTouchStart = useCallback((e) => {
         isDragging.current = true;
         lastX.current = e.touches[0].clientX;
+        touchStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
         velocityRef.current = 0;
         cancelAnimationFrame(inertiaRafRef.current);
         hideHotspots();
@@ -265,11 +283,25 @@ export default function ImageSequenceViewer({
         e.preventDefault();
     }, [goToFrame]);
 
-    const onTouchEnd = useCallback(() => {
+    const onTouchEnd = useCallback((e) => {
         if (!isDragging.current) return;
         isDragging.current = false;
+
+        // Parmak az hareket ettiyse → tap, bina tıklaması say
+        const touch = e.changedTouches[0];
+        const dx = Math.abs(touch.clientX - touchStartRef.current.x);
+        const dy = Math.abs(touch.clientY - touchStartRef.current.y);
+        if (dx < 10 && dy < 10) {
+            const rect = containerRef.current?.getBoundingClientRect();
+            if (rect) {
+                const key = pickBuilding(touch.clientX, touch.clientY, rect, frameRef.current);
+                const building = key ? buildingData[key] : null;
+                if (building) { onBuildingClick?.(building); return; }
+            }
+        }
+
         startInertia();
-    }, [startInertia]);
+    }, [startInertia, pickBuilding, buildingData, onBuildingClick]);
 
     // ── Keyboard ──────────────────────────────────────────────────────────
     useEffect(() => {
@@ -282,8 +314,8 @@ export default function ImageSequenceViewer({
     }, [goToFrame, hideHotspots, scheduleHotspots]);
 
     useEffect(() => {
-        if (loadedCount === TOTAL_FRAMES) scheduleHotspots();
-    }, [loadedCount, scheduleHotspots]);
+        if (firstFrameReady) scheduleHotspots();
+    }, [firstFrameReady, scheduleHotspots]);
 
     useEffect(() => () => {
         cancelAnimationFrame(inertiaRafRef.current);
@@ -294,7 +326,7 @@ export default function ImageSequenceViewer({
 
     const currentHotspots = hotspots[String(frameIndex)] || [];
     const loadPercent = Math.round((loadedCount / TOTAL_FRAMES) * 100);
-    const isLoading = loadedCount < TOTAL_FRAMES;
+    const isLoading = !firstFrameReady;
 
     return (
         <div

@@ -1024,3 +1024,98 @@ body {
     cursor: pointer;
     pointer-events: all;
 }
+
+/* ══════════════════════════════════════════════════
+   MOBILE RESPONSIVE  (≤ 640px)
+   Layout: üst %50 = viewer, alt %50 = sidebar
+══════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+
+    /* ── Ana container → dikey flex ── */
+    .app-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* ── Viewer → üst %60 ── */
+    .viewer-container {
+        height: 60dvh;
+        flex: 0 0 60dvh;
+        width: 100%;
+    }
+
+    /* ── Sidebar → alt %40, daima açık ── */
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: 40dvh;
+        flex: 0 0 40dvh;
+        top: auto;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        transform: none !important;
+        border-right: none;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    /* Toggle butonu gizle — sidebar daima açık */
+    .sidebar-toggle-btn {
+        display: none;
+    }
+
+    /* Kapat butonu gizle */
+    .sidebar-close-btn {
+        display: none;
+    }
+
+    /* ── Nav okları ── */
+    .nav-arrow {
+        width: 40px;
+        height: 52px;
+        font-size: 24px;
+    }
+
+    .nav-left  { left: 6px; }
+    .nav-right { right: 6px; }
+
+    /* ── Bina etiketleri — küçült ── */
+    .building-label-card {
+        padding: 5px 9px;
+    }
+
+    .building-label-name {
+        font-size: 11px;
+    }
+
+    .building-label-sub {
+        font-size: 10px;
+    }
+
+    .building-label-line {
+        height: 12px;
+    }
+
+    /* ── InfoCard → sidebar alanını kapla ── */
+    .info-card {
+        position: fixed;
+        top: 60dvh;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        transform: none;
+        max-width: 100%;
+        min-width: unset;
+        border-radius: 0;
+        padding: 16px 16px 24px;
+        overflow-y: auto;
+        z-index: 700;
+    }
+
+    /* ── Sidebar sekmeleri → 2 kolonlu ── */
+    .sidebar-tabs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
