@@ -578,8 +578,8 @@ body {
     bottom: 0;
     width: 360px;
     z-index: 600;
-    background: #08081a;
-    border-right: 1px solid rgba(255, 255, 255, 0.06);
+    background: linear-gradient(160deg, #141220 0%, #0f0e1a 100%);
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
     backdrop-filter: blur(24px);
     display: flex;
     flex-direction: column;
@@ -838,10 +838,10 @@ body {
 .sidebar-list {
     flex: 1;
     overflow-y: auto;
-    padding: 4px 12px 20px;
+    padding: 8px 12px 24px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
 }
 
 .sidebar-list::-webkit-scrollbar { width: 3px; }
@@ -861,55 +861,52 @@ body {
 
 /* ── Daire kartı ──────────────────────────────────────── */
 .apt-card {
-    background: rgba(255, 255, 255, 0.028);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
     border-radius: 12px;
-    padding: 13px 14px 12px 17px;
+    padding: 12px 14px 12px 18px;
     cursor: pointer;
     transition: background 0.18s, border-color 0.18s, box-shadow 0.18s;
     position: relative;
     overflow: hidden;
 }
 
-/* Sol renkli aksan çizgisi — status rengine göre */
+/* Sol renkli aksan çizgisi */
 .apt-card::before {
     content: '';
     position: absolute;
     left: 0;
-    top: 8px;
-    bottom: 8px;
+    top: 10px;
+    bottom: 10px;
     width: 3px;
     border-radius: 0 3px 3px 0;
-    background: rgba(255, 255, 255, 0.08);
-    transition: opacity 0.18s;
 }
 
-.apt-card[data-status="Satışta"]::before  { background: #69f0ae; opacity: 0.7; }
-.apt-card[data-status="Rezerve"]::before  { background: #ffab40; opacity: 0.7; }
-.apt-card[data-status="Satıldı"]::before  { background: #ff5252; opacity: 0.5; }
+.apt-card[data-status="Satışta"]::before  { background: #4ade80; }
+.apt-card[data-status="Rezerve"]::before  { background: #fb923c; }
+.apt-card[data-status="Satıldı"]::before  { background: #f87171; opacity: 0.6; }
 
 .apt-card:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.12);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
 }
 
-.apt-card[data-status="Satışta"]:hover { border-color: rgba(105, 240, 174, 0.18); }
-.apt-card[data-status="Rezerve"]:hover { border-color: rgba(255, 171, 64, 0.2); }
-.apt-card[data-status="Satıldı"]:hover { border-color: rgba(255, 82, 82, 0.15); }
+.apt-card[data-status="Satışta"]:hover { border-color: rgba(74, 222, 128, 0.25); }
+.apt-card[data-status="Rezerve"]:hover { border-color: rgba(251, 146, 60, 0.25); }
+.apt-card[data-status="Satıldı"]:hover { border-color: rgba(248, 113, 113, 0.2); }
 
 /* Üst satır: numara + status */
 .apt-card-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
 }
 
 .apt-card-number {
     font-size: 14px;
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.88);
+    color: rgba(255, 255, 255, 0.92);
     letter-spacing: -0.1px;
 }
 
@@ -918,23 +915,22 @@ body {
     font-weight: 700;
     padding: 2px 8px;
     border-radius: 20px;
-    border: 1px solid currentColor;
+    border: 1px solid;
     letter-spacing: 0.5px;
     text-transform: uppercase;
-    opacity: 0.85;
 }
 
-/* Meta bilgileri — separator ile */
+/* Meta: 1+X · X m² · Kat X */
 .apt-card-meta {
     display: flex;
     align-items: center;
-    margin-bottom: 9px;
+    margin-bottom: 8px;
     gap: 0;
 }
 
 .apt-meta-tag {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.32);
+    font-size: 11.5px;
+    color: rgba(255, 255, 255, 0.55);
     white-space: nowrap;
     font-weight: 500;
     background: none;
@@ -945,7 +941,7 @@ body {
 .apt-meta-tag + .apt-meta-tag::before {
     content: '·';
     margin: 0 6px;
-    color: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.25);
 }
 
 /* Alt satır: bina + fiyat */
@@ -957,9 +953,9 @@ body {
 
 .apt-card-building {
     font-size: 10px;
-    color: rgba(255, 255, 255, 0.22);
+    color: rgba(255, 255, 255, 0.38);
     font-weight: 600;
-    letter-spacing: 0.4px;
+    letter-spacing: 0.3px;
     text-transform: uppercase;
 }
 
@@ -972,10 +968,10 @@ body {
 
 .apt-card-desc {
     font-size: 11px;
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.3);
     margin-top: 8px;
     padding-top: 8px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
     line-height: 1.45;
     white-space: nowrap;
     overflow: hidden;

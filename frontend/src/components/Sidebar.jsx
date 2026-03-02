@@ -267,8 +267,8 @@ export default function Sidebar({ open, onClose, onSelectApartment, externalBuil
                                         className="apt-card-status"
                                         style={{
                                             color: statusColor(st),
-                                            borderColor: statusColor(st) + '44',
-                                            background: statusColor(st) + '14',
+                                            borderColor: statusColor(st) + '55',
+                                            background: statusColor(st) + '1a',
                                         }}
                                     >
                                         {st}
