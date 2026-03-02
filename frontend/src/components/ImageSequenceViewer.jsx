@@ -18,13 +18,18 @@ function getAvailable(buildingId) {
     return { available: avail.length, total: all.length };
 }
 
-const TOTAL_FRAMES = 360;
+const TOTAL_FRAMES = 120;  // 3° adımlarla 120 frame → 360° tam tur
+const FRAME_STEP = 3;      // gerçek dosya index = mantıksal × FRAME_STEP
 const PX_PER_FRAME = 4;
 const HOTSPOT_DELAY_MS = 400;
 
+// Masaüstü: frames/ (1920px)  |  Mobil (≤640px): frames_sm/ (640px, 17× küçük)
+const IS_MOBILE = window.matchMedia('(max-width: 640px)').matches;
+const FRAME_DIR = IS_MOBILE ? 'frames_sm' : 'frames';
+
 function frameUrl(index) {
-    const padded = String(index).padStart(3, '0');
-    return `${import.meta.env.BASE_URL}frames/frame_${padded}.webp`;
+    const padded = String(index * FRAME_STEP).padStart(3, '0');
+    return `${import.meta.env.BASE_URL}${FRAME_DIR}/frame_${padded}.webp`;
 }
 
 export default function ImageSequenceViewer({

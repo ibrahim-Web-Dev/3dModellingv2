@@ -6,10 +6,13 @@ const BUILDING_COLORS = {
     '0,0,255': { target: [0, 0, 255], glow: [60, 160, 255, 135] },
 };
 const TOLERANCE = 40;
+const FRAME_STEP = 3;
+const IS_MOBILE = window.matchMedia('(max-width: 640px)').matches;
+const MASK_DIR = IS_MOBILE ? 'masks_sm' : 'masks';
 
 function maskUrl(index) {
-    const padded = String(index).padStart(3, '0');
-    return `${import.meta.env.BASE_URL}masks/mask_${padded}.webp`;
+    const padded = String(index * FRAME_STEP).padStart(3, '0');
+    return `${import.meta.env.BASE_URL}${MASK_DIR}/mask_${padded}.webp`;
 }
 
 function matchColor(r, g, b) {
