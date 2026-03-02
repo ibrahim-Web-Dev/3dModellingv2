@@ -158,7 +158,7 @@ export default function Sidebar({ open, onClose, onSelectApartment, externalBuil
 
                 {/* Header */}
                 <div className="sidebar-header">
-                    <span className="sidebar-title">🏢 Daire Listesi</span>
+                    <span className="sidebar-title">Daire Listesi</span>
                     <button className="sidebar-close-btn" onClick={() => onClose(false)}>✕</button>
                 </div>
 
@@ -194,7 +194,7 @@ export default function Sidebar({ open, onClose, onSelectApartment, externalBuil
                     className="filter-toggle-btn"
                     onClick={() => setShowFilters(v => !v)}
                 >
-                    <span>🔍 Gelişmiş Filtreler</span>
+                    <span>Gelişmiş Filtreler</span>
                     <span className={`filter-chevron ${showFilters ? 'filter-chevron--open' : ''}`}>›</span>
                 </button>
 
@@ -258,6 +258,7 @@ export default function Sidebar({ open, onClose, onSelectApartment, externalBuil
                             <div
                                 key={apt.id}
                                 className="apt-card"
+                                data-status={st}
                                 onClick={() => onSelectApartment(apt)}
                             >
                                 <div className="apt-card-top">
@@ -266,17 +267,17 @@ export default function Sidebar({ open, onClose, onSelectApartment, externalBuil
                                         className="apt-card-status"
                                         style={{
                                             color: statusColor(st),
-                                            borderColor: statusColor(st) + '55',
-                                            background: statusColor(st) + '18',
+                                            borderColor: statusColor(st) + '44',
+                                            background: statusColor(st) + '14',
                                         }}
                                     >
                                         {st}
                                     </span>
                                 </div>
                                 <div className="apt-card-meta">
-                                    <span className="apt-meta-tag">🏷 1+{apt.rooms}</span>
-                                    <span className="apt-meta-tag">📐 {apt.sqm} m²</span>
-                                    <span className="apt-meta-tag">🏢 Kat {apt.floor}</span>
+                                    <span className="apt-meta-tag">1+{apt.rooms}</span>
+                                    <span className="apt-meta-tag">{apt.sqm} m²</span>
+                                    <span className="apt-meta-tag">Kat {apt.floor}</span>
                                 </div>
                                 <div className="apt-card-details">
                                     <span className="apt-card-building">{apt.building}</span>

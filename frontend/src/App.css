@@ -539,7 +539,7 @@ body {
    SIDEBAR
 ══════════════════════════════════════════════════ */
 
-/* Sidebar aç/kapat toggle butonu */
+/* Toggle butonu */
 .sidebar-toggle-btn {
     position: fixed;
     top: 24px;
@@ -568,9 +568,7 @@ body {
     border-color: rgba(232, 184, 93, 0.65);
 }
 
-.sidebar-toggle-icon {
-    font-size: 16px;
-}
+.sidebar-toggle-icon { font-size: 16px; }
 
 /* Ana panel */
 .sidebar {
@@ -580,20 +578,18 @@ body {
     bottom: 0;
     width: 360px;
     z-index: 600;
-    background: rgba(6, 6, 16, 0.94);
-    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    background: #08081a;
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(24px);
     display: flex;
     flex-direction: column;
     transform: translateX(-100%);
     transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 4px 0 40px rgba(0, 0, 0, 0.6);
+    box-shadow: 6px 0 48px rgba(0, 0, 0, 0.7);
     font-family: 'Inter', system-ui, sans-serif;
 }
 
-.sidebar--open {
-    transform: translateX(0);
-}
+.sidebar--open { transform: translateX(0); }
 
 /* Header */
 .sidebar-header {
@@ -601,93 +597,121 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 20px 18px 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     flex-shrink: 0;
+    position: relative;
+}
+
+.sidebar-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 18px;
+    right: 18px;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(232,184,93,0.45) 0%, rgba(232,184,93,0.08) 60%, transparent 100%);
 }
 
 .sidebar-title {
     font-size: 15px;
-    font-weight: 700;
-    color: #f0d080;
-    letter-spacing: 0.1px;
+    font-weight: 800;
+    color: #f5e08a;
+    letter-spacing: -0.2px;
 }
 
 .sidebar-close-btn {
-    background: none;
-    border: none;
-    color: rgba(255, 255, 255, 0.35);
-    font-size: 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 14px;
     cursor: pointer;
-    padding: 4px 8px;
-    border-radius: 6px;
-    transition: color 0.15s, background 0.15s;
+    width: 28px;
+    height: 28px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+    line-height: 1;
 }
 
 .sidebar-close-btn:hover {
     color: white;
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.15);
 }
 
-/* Arama */
-.sidebar-search-wrap {
-    padding: 12px 14px 8px;
+/* ── Bina Seçici — tab bar ────────────────────────────── */
+.bina-selector-wrap {
+    display: flex;
+    gap: 0;
+    padding: 16px 18px 0;
     flex-shrink: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-.sidebar-search {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    padding: 9px 12px;
-    color: white;
-    font-size: 13px;
-    font-family: inherit;
-    outline: none;
-    transition: border-color 0.15s;
-}
-
-.sidebar-search::placeholder {
+.bina-btn {
+    flex: 1;
+    padding: 8px 4px 10px;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
     color: rgba(255, 255, 255, 0.3);
+    font-size: 12px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    transition: color 0.16s, border-color 0.16s;
+    letter-spacing: 0.4px;
+    text-align: center;
 }
 
-.sidebar-search:focus {
-    border-color: rgba(232, 184, 93, 0.5);
+.bina-btn:hover {
+    color: rgba(255, 255, 255, 0.6);
 }
 
-/* Durum sekmeleri */
+.bina-btn--active {
+    color: #f0d080;
+    border-bottom-color: #e8b85d;
+}
+
+/* ── Durum sekmeleri — pill row ───────────────────────── */
 .sidebar-tabs {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
-    padding: 0 14px 10px;
+    display: flex;
+    gap: 5px;
+    padding: 14px 18px 0;
     flex-shrink: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
 }
+
+.sidebar-tabs::-webkit-scrollbar { display: none; }
 
 .sidebar-tab {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 2px;
-    padding: 7px 4px;
+    gap: 6px;
+    padding: 5px 12px;
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 8px;
-    color: rgba(255, 255, 255, 0.45);
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.38);
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 600;
     font-family: inherit;
     cursor: pointer;
-    transition: all 0.15s;
+    transition: all 0.16s;
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .sidebar-tab:hover {
     background: rgba(255, 255, 255, 0.07);
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(255, 255, 255, 0.65);
 }
 
 .sidebar-tab--active {
-    background: rgba(232, 184, 93, 0.14);
+    background: rgba(232, 184, 93, 0.1);
     border-color: rgba(232, 184, 93, 0.4);
     color: #f0d080;
 }
@@ -695,82 +719,186 @@ body {
 .sidebar-tab-count {
     font-size: 10px;
     font-weight: 700;
-    opacity: 0.75;
+    background: rgba(255, 255, 255, 0.07);
+    padding: 1px 6px;
+    border-radius: 10px;
+    min-width: 20px;
+    text-align: center;
 }
 
-/* Sıralama satırı */
-.sidebar-sort-row {
+.sidebar-tab--active .sidebar-tab-count {
+    background: rgba(232, 184, 93, 0.18);
+    color: #f0d080;
+}
+
+/* ── Filtre toggle ────────────────────────────────────── */
+.filter-toggle-btn {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 14px 10px;
+    margin: 12px 18px 0;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.38);
+    font-size: 11px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    letter-spacing: 0.3px;
+}
+
+.filter-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.filter-chevron {
+    font-size: 16px;
+    line-height: 1;
+    transition: transform 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    color: rgba(232, 184, 93, 0.45);
+    transform: rotate(90deg);
+}
+
+.filter-chevron--open { transform: rotate(-90deg); }
+
+/* ── Filtreler paneli ─────────────────────────────────── */
+.filters-panel {
+    padding: 10px 18px 6px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
     flex-shrink: 0;
 }
 
-.sidebar-result-count {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.4);
-    font-weight: 500;
-}
-
-.sidebar-sort {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 6px;
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 11px;
-    font-family: inherit;
-    padding: 5px 8px;
-    outline: none;
-    cursor: pointer;
-}
-
-/* Daire listesi */
-.sidebar-list {
-    flex: 1;
-    overflow-y: auto;
-    padding: 0 10px 16px;
+.filter-section {
     display: flex;
     flex-direction: column;
     gap: 7px;
 }
 
-.sidebar-list::-webkit-scrollbar {
-    width: 4px;
+.filter-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.sidebar-list::-webkit-scrollbar-track {
-    background: transparent;
+.filter-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
 }
 
+.filter-value {
+    font-size: 11px;
+    font-weight: 700;
+    color: #f0d080;
+    letter-spacing: 0.1px;
+}
+
+/* ── Sıralama satırı ──────────────────────────────────── */
+.sidebar-sort-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 18px 8px;
+    flex-shrink: 0;
+}
+
+.sidebar-result-count {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.25);
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+.sidebar-sort {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 7px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    font-family: inherit;
+    padding: 5px 10px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.15s;
+}
+
+.sidebar-sort:hover { border-color: rgba(232, 184, 93, 0.25); }
+
+/* ── Daire listesi ────────────────────────────────────── */
+.sidebar-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 4px 12px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sidebar-list::-webkit-scrollbar { width: 3px; }
+.sidebar-list::-webkit-scrollbar-track { background: transparent; }
 .sidebar-list::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.07);
     border-radius: 99px;
 }
 
 .sidebar-empty {
     text-align: center;
-    color: rgba(255, 255, 255, 0.25);
+    color: rgba(255, 255, 255, 0.18);
     font-size: 13px;
-    padding: 32px 0;
+    padding: 40px 0;
+    letter-spacing: 0.2px;
 }
 
-/* Daire kartı */
+/* ── Daire kartı ──────────────────────────────────────── */
 .apt-card {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.028);
     border: 1px solid rgba(255, 255, 255, 0.07);
-    border-radius: 10px;
-    padding: 11px 13px;
+    border-radius: 12px;
+    padding: 13px 14px 12px 17px;
     cursor: pointer;
-    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+    transition: background 0.18s, border-color 0.18s, box-shadow 0.18s;
+    position: relative;
+    overflow: hidden;
 }
+
+/* Sol renkli aksan çizgisi — status rengine göre */
+.apt-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 3px;
+    border-radius: 0 3px 3px 0;
+    background: rgba(255, 255, 255, 0.08);
+    transition: opacity 0.18s;
+}
+
+.apt-card[data-status="Satışta"]::before  { background: #69f0ae; opacity: 0.7; }
+.apt-card[data-status="Rezerve"]::before  { background: #ffab40; opacity: 0.7; }
+.apt-card[data-status="Satıldı"]::before  { background: #ff5252; opacity: 0.5; }
 
 .apt-card:hover {
-    background: rgba(232, 184, 93, 0.07);
-    border-color: rgba(232, 184, 93, 0.3);
-    transform: translateX(2px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
+.apt-card[data-status="Satışta"]:hover { border-color: rgba(105, 240, 174, 0.18); }
+.apt-card[data-status="Rezerve"]:hover { border-color: rgba(255, 171, 64, 0.2); }
+.apt-card[data-status="Satıldı"]:hover { border-color: rgba(255, 82, 82, 0.15); }
+
+/* Üst satır: numara + status */
 .apt-card-top {
     display: flex;
     align-items: center;
@@ -781,175 +909,77 @@ body {
 .apt-card-number {
     font-size: 14px;
     font-weight: 700;
-    color: white;
-    letter-spacing: 0.1px;
+    color: rgba(255, 255, 255, 0.88);
+    letter-spacing: -0.1px;
 }
 
 .apt-card-status {
-    font-size: 10px;
-    font-weight: 600;
+    font-size: 9px;
+    font-weight: 700;
     padding: 2px 8px;
     border-radius: 20px;
-    border: 1px solid;
-    letter-spacing: 0.2px;
+    border: 1px solid currentColor;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    opacity: 0.85;
 }
 
+/* Meta bilgileri — separator ile */
+.apt-card-meta {
+    display: flex;
+    align-items: center;
+    margin-bottom: 9px;
+    gap: 0;
+}
+
+.apt-meta-tag {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.32);
+    white-space: nowrap;
+    font-weight: 500;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.apt-meta-tag + .apt-meta-tag::before {
+    content: '·';
+    margin: 0 6px;
+    color: rgba(255, 255, 255, 0.15);
+}
+
+/* Alt satır: bina + fiyat */
 .apt-card-details {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-    color: rgba(255, 255, 255, 0.45);
-    margin-top: 4px;
+    align-items: flex-end;
 }
 
 .apt-card-building {
-    font-size: 11px;
-    color: rgba(255, 255, 255, 0.35);
-    font-weight: 500;
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.22);
+    font-weight: 600;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
 }
 
 .apt-card-price {
     color: #f0d080;
-    font-weight: 600;
-    font-size: 12px;
-}
-
-.apt-card-meta {
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
-    margin-top: 5px;
-    margin-bottom: 2px;
-}
-
-.apt-meta-tag {
-    font-size: 10px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 5px;
-    padding: 2px 6px;
-    color: rgba(255, 255, 255, 0.5);
-    white-space: nowrap;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: -0.3px;
 }
 
 .apt-card-desc {
     font-size: 11px;
-    color: rgba(255, 255, 255, 0.25);
-    margin-top: 5px;
-    line-height: 1.4;
+    color: rgba(255, 255, 255, 0.2);
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    line-height: 1.45;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-}
-
-/* ── Bina Seçici ─────────────────────────────────────────── */
-.bina-selector-wrap {
-    display: flex;
-    gap: 5px;
-    padding: 10px 14px 8px;
-    flex-shrink: 0;
-}
-
-.bina-btn {
-    flex: 1;
-    padding: 7px 6px;
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 11px;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    transition: all 0.15s;
-    letter-spacing: 0.2px;
-}
-
-.bina-btn:hover {
-    background: rgba(255, 255, 255, 0.09);
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.bina-btn--active {
-    background: rgba(232, 184, 93, 0.18);
-    border-color: rgba(232, 184, 93, 0.55);
-    color: #f0d080;
-    box-shadow: 0 0 12px rgba(232, 184, 93, 0.15);
-}
-
-/* ── Filtre toggle butonu ───────────────────────────────── */
-.filter-toggle-btn {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin: 2px 14px 2px;
-    padding: 8px 12px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 8px;
-    color: rgba(255, 255, 255, 0.55);
-    font-size: 11px;
-    font-weight: 600;
-    font-family: inherit;
-    cursor: pointer;
-    transition: all 0.15s;
-    flex-shrink: 0;
-    letter-spacing: 0.2px;
-}
-
-.filter-toggle-btn:hover {
-    background: rgba(255, 255, 255, 0.07);
-    color: rgba(255, 255, 255, 0.8);
-}
-
-.filter-chevron {
-    font-size: 18px;
-    line-height: 1;
-    transition: transform 0.2s;
-    color: rgba(232, 184, 93, 0.6);
-    transform: rotate(90deg);
-}
-
-.filter-chevron--open {
-    transform: rotate(-90deg);
-}
-
-/* ── Filtreler paneli ──────────────────────────────────── */
-.filters-panel {
-    padding: 8px 14px 4px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    flex-shrink: 0;
-}
-
-.filter-section {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-.filter-label-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.filter-label {
-    font-size: 11px;
-    font-weight: 600;
-    color: rgba(255, 255, 255, 0.45);
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
-}
-
-.filter-value {
-    font-size: 11px;
-    font-weight: 700;
-    color: #f0d080;
-    letter-spacing: 0.1px;
 }
 
 /* ── Dual Range Slider ─────────────────────────────────── */
