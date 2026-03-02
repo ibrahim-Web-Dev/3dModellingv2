@@ -6,11 +6,24 @@ frontend/dist/
 backend/target/
 
 # 3D Model files (büyük dosyalar)
-backend/src/main/resources/static/*.glb
-backend/src/main/resources/static/*.gltf
-backend/src/main/resources/static/*.fbx
-backend/src/main/resources/static/*.obj
+**/*.glb
+**/*.gltf
+**/*.fbx
+**/*.obj
+**/*.stl
+**/*.dae
+**/*.3ds
+**/*.mtl
+
+# Resources
+**/frames/*.png
+**/masks/*.png
+**/renders_mask/
+**/node_modules/
+dist/
+target/
 
 # OS
 .DS_Store
 Thumbs.db
+*.log

@@ -1,5 +1,11 @@
 /* ── Reset & base ───────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
 body {
     background: #0a0a0f;
@@ -61,16 +67,20 @@ body {
 .loading-spinner {
     width: 52px;
     height: 52px;
-    border: 3px solid rgba(255,255,255,0.08);
+    border: 3px solid rgba(255, 255, 255, 0.08);
     border-top-color: #e8b85d;
     border-radius: 50%;
     animation: spin 0.8s linear infinite;
 }
 
-@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
 
 .loading-text {
-    color: rgba(255,255,255,0.7);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 14px;
     letter-spacing: 0.6px;
     font-weight: 500;
@@ -79,7 +89,7 @@ body {
 .loading-bar-track {
     width: 100%;
     height: 3px;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08);
     border-radius: 99px;
     overflow: hidden;
 }
@@ -125,8 +135,15 @@ body {
 }
 
 @keyframes pulse {
-    0%, 100% { box-shadow: 0 0 0 4px rgba(232,184,93,0.25), 0 0 18px rgba(232,184,93,0.4); }
-    50%       { box-shadow: 0 0 0 8px rgba(232,184,93,0.1),  0 0 28px rgba(232,184,93,0.6); }
+
+    0%,
+    100% {
+        box-shadow: 0 0 0 4px rgba(232, 184, 93, 0.25), 0 0 18px rgba(232, 184, 93, 0.4);
+    }
+
+    50% {
+        box-shadow: 0 0 0 8px rgba(232, 184, 93, 0.1), 0 0 28px rgba(232, 184, 93, 0.6);
+    }
 }
 
 .hotspot-label {
@@ -142,7 +159,7 @@ body {
     backdrop-filter: blur(8px);
     letter-spacing: 0.3px;
     pointer-events: none;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     transform: translateY(2px);
     transition: transform 0.2s ease;
 }
@@ -155,7 +172,7 @@ body {
 
 .hotspot:hover .hotspot-dot {
     background: #f0d080;
-    box-shadow: 0 0 0 6px rgba(232,184,93,0.2), 0 0 30px rgba(232,184,93,0.7);
+    box-shadow: 0 0 0 6px rgba(232, 184, 93, 0.2), 0 0 30px rgba(232, 184, 93, 0.7);
 }
 
 /* ── Frame counter ──────────────────────────────── */
@@ -164,12 +181,12 @@ body {
     bottom: 18px;
     right: 18px;
     background: rgba(10, 10, 20, 0.7);
-    color: rgba(255,255,255,0.45);
+    color: rgba(255, 255, 255, 0.45);
     font-size: 11px;
     font-family: 'SF Mono', 'Fira Code', monospace;
     padding: 4px 10px;
     border-radius: 6px;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(6px);
     pointer-events: none;
     letter-spacing: 0.5px;
@@ -181,8 +198,8 @@ body {
     top: 50%;
     transform: translateY(-50%);
     background: rgba(10, 10, 20, 0.65);
-    border: 1px solid rgba(255,255,255,0.12);
-    color: rgba(255,255,255,0.8);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.8);
     font-size: 32px;
     line-height: 1;
     width: 48px;
@@ -204,8 +221,13 @@ body {
     color: #f0d080;
 }
 
-.nav-left  { left: 16px; }
-.nav-right { right: 16px; }
+.nav-left {
+    left: 16px;
+}
+
+.nav-right {
+    right: 16px;
+}
 
 /* ── Calibration banner ─────────────────────────── */
 .calibration-banner {
@@ -222,7 +244,7 @@ body {
     letter-spacing: 0.3px;
     z-index: 300;
     backdrop-filter: blur(4px);
-    border-bottom: 1px solid rgba(255,180,0,0.4);
+    border-bottom: 1px solid rgba(255, 180, 0, 0.4);
 }
 
 /* ── InfoCard ───────────────────────────────────── */
@@ -239,7 +261,7 @@ body {
     max-width: 380px;
     color: white;
     z-index: 500;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.04);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.04);
     backdrop-filter: blur(20px);
     font-family: 'Inter', system-ui, sans-serif;
 }
@@ -257,20 +279,31 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
     font-size: 14px;
 }
 
-.info-row span { color: rgba(255,255,255,0.5); }
-.info-row strong { color: white; font-weight: 600; }
+.info-row span {
+    color: rgba(255, 255, 255, 0.5);
+}
 
-.status.for-sale { color: #4caf50; }
-.status.sold     { color: #f44336; }
+.info-row strong {
+    color: white;
+    font-weight: 600;
+}
+
+.status.for-sale {
+    color: #4caf50;
+}
+
+.status.sold {
+    color: #f44336;
+}
 
 .description {
     margin-top: 16px;
     font-size: 13px;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255, 255, 255, 0.55);
     line-height: 1.6;
 }
 
@@ -280,7 +313,7 @@ body {
     right: 16px;
     background: none;
     border: none;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255, 255, 255, 0.4);
     font-size: 22px;
     cursor: pointer;
     line-height: 1;
@@ -291,5 +324,703 @@ body {
 
 .close-btn:hover {
     color: white;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* ── Overlay canvas (bina parlaması) ──────────────── */
+.overlay-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    mix-blend-mode: normal;
+    pointer-events: none;
+}
+
+/* ── Building Tooltip ────────────────────────────── */
+.building-tooltip {
+    position: fixed;
+    z-index: 800;
+    background: rgba(8, 8, 18, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 16px 18px;
+    color: white;
+    font-family: 'Inter', system-ui, sans-serif;
+    backdrop-filter: blur(24px);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    pointer-events: none;
+    animation: tooltipIn 0.18s ease;
+    transform-origin: top left;
+}
+
+@keyframes tooltipIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.bt-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+
+.bt-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: #f0d080;
+    line-height: 1.3;
+    flex: 1;
+    letter-spacing: -0.2px;
+}
+
+.bt-status {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
+}
+
+.bt-progress-wrap {
+    margin-bottom: 10px;
+}
+
+.bt-progress-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.bt-progress-track {
+    height: 4px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.bt-progress-fill {
+    height: 100%;
+    border-radius: 99px;
+    transition: width 0.4s ease;
+}
+
+.bt-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    padding: 6px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.bt-row strong {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+}
+
+.bt-desc {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.35);
+    line-height: 1.5;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.bt-hint {
+    font-size: 10px;
+    color: rgba(232, 184, 93, 0.5);
+    text-align: center;
+    margin-top: 10px;
+    letter-spacing: 0.4px;
+    font-weight: 500;
+}
+
+/* ── Building name labels (centroid konumlu) ──── */
+.building-label {
+    position: absolute;
+    transform: translate(-50%, -100%);
+    margin-top: -28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    cursor: pointer;
+    pointer-events: auto;
+    z-index: 20;
+    animation: labelIn 0.35s ease both;
+}
+
+@keyframes labelIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -90%) scale(0.92);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(-50%, -100%) scale(1);
+    }
+}
+
+/* Kart gövdesi */
+.building-label-card {
+    background: rgba(8, 8, 20, 0.88);
+    border: 1px solid rgba(232, 184, 93, 0.45);
+    border-radius: 11px;
+    padding: 10px 18px;
+    backdrop-filter: blur(16px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: background 0.15s, border-color 0.15s;
+    white-space: nowrap;
+}
+
+.building-label:hover .building-label-card {
+    background: rgba(20, 14, 4, 0.95);
+    border-color: rgba(232, 184, 93, 0.7);
+}
+
+.building-label-name {
+    color: #f5d878;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.1px;
+    line-height: 1.2;
+}
+
+.building-label-sub {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    /* renk JSX'te soldPercent'e göre inline style ile ayarlanıyor */
+}
+
+/* Karttan aşağı inen bağlantı çizgisi */
+.building-label-line {
+    width: 1px;
+    height: 20px;
+    background: linear-gradient(to bottom, rgba(232, 184, 93, 0.5), rgba(232, 184, 93, 0.15));
+}
+
+/* Alt pin noktası */
+.building-label-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(232, 184, 93, 0.85);
+    box-shadow: 0 0 6px rgba(232, 184, 93, 0.5);
+}
+
+/* ══════════════════════════════════════════════════
+   SIDEBAR
+══════════════════════════════════════════════════ */
+
+/* Sidebar aç/kapat toggle butonu */
+.sidebar-toggle-btn {
+    position: fixed;
+    top: 24px;
+    left: 20px;
+    z-index: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(8, 8, 20, 0.82);
+    border: 1px solid rgba(232, 184, 93, 0.35);
+    border-radius: 10px;
+    padding: 10px 16px;
+    color: #f0d080;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Inter', system-ui, sans-serif;
+    cursor: pointer;
+    backdrop-filter: blur(14px);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5);
+    transition: background 0.15s, border-color 0.15s;
+    letter-spacing: 0.2px;
+}
+
+.sidebar-toggle-btn:hover {
+    background: rgba(20, 14, 4, 0.95);
+    border-color: rgba(232, 184, 93, 0.65);
+}
+
+.sidebar-toggle-icon {
+    font-size: 16px;
+}
+
+/* Ana panel */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 360px;
+    z-index: 600;
+    background: rgba(6, 6, 16, 0.94);
+    border-right: 1px solid rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(24px);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 0 40px rgba(0, 0, 0, 0.6);
+    font-family: 'Inter', system-ui, sans-serif;
+}
+
+.sidebar--open {
+    transform: translateX(0);
+}
+
+/* Header */
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 18px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    flex-shrink: 0;
+}
+
+.sidebar-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #f0d080;
+    letter-spacing: 0.1px;
+}
+
+.sidebar-close-btn {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.35);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: color 0.15s, background 0.15s;
+}
+
+.sidebar-close-btn:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+/* Arama */
+.sidebar-search-wrap {
+    padding: 12px 14px 8px;
+    flex-shrink: 0;
+}
+
+.sidebar-search {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 9px 12px;
+    color: white;
+    font-size: 13px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.15s;
+}
+
+.sidebar-search::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.sidebar-search:focus {
+    border-color: rgba(232, 184, 93, 0.5);
+}
+
+/* Durum sekmeleri */
+.sidebar-tabs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+    padding: 0 14px 10px;
+    flex-shrink: 0;
+}
+
+.sidebar-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 7px 4px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 11px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.sidebar-tab:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.sidebar-tab--active {
+    background: rgba(232, 184, 93, 0.14);
+    border-color: rgba(232, 184, 93, 0.4);
+    color: #f0d080;
+}
+
+.sidebar-tab-count {
+    font-size: 10px;
+    font-weight: 700;
+    opacity: 0.75;
+}
+
+/* Sıralama satırı */
+.sidebar-sort-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px 10px;
+    flex-shrink: 0;
+}
+
+.sidebar-result-count {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 500;
+}
+
+.sidebar-sort {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 11px;
+    font-family: inherit;
+    padding: 5px 8px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Daire listesi */
+.sidebar-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 10px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.sidebar-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 99px;
+}
+
+.sidebar-empty {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 13px;
+    padding: 32px 0;
+}
+
+/* Daire kartı */
+.apt-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    padding: 11px 13px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s, transform 0.1s;
+}
+
+.apt-card:hover {
+    background: rgba(232, 184, 93, 0.07);
+    border-color: rgba(232, 184, 93, 0.3);
+    transform: translateX(2px);
+}
+
+.apt-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.apt-card-number {
+    font-size: 14px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.1px;
+}
+
+.apt-card-status {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid;
+    letter-spacing: 0.2px;
+}
+
+.apt-card-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.45);
+    margin-top: 4px;
+}
+
+.apt-card-building {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.35);
+    font-weight: 500;
+}
+
+.apt-card-price {
+    color: #f0d080;
+    font-weight: 600;
+    font-size: 12px;
+}
+
+.apt-card-meta {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    margin-top: 5px;
+    margin-bottom: 2px;
+}
+
+.apt-meta-tag {
+    font-size: 10px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    padding: 2px 6px;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+}
+
+.apt-card-desc {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.25);
+    margin-top: 5px;
+    line-height: 1.4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ── Bina Seçici ─────────────────────────────────────────── */
+.bina-selector-wrap {
+    display: flex;
+    gap: 5px;
+    padding: 10px 14px 8px;
+    flex-shrink: 0;
+}
+
+.bina-btn {
+    flex: 1;
+    padding: 7px 6px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 11px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.2px;
+}
+
+.bina-btn:hover {
+    background: rgba(255, 255, 255, 0.09);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.bina-btn--active {
+    background: rgba(232, 184, 93, 0.18);
+    border-color: rgba(232, 184, 93, 0.55);
+    color: #f0d080;
+    box-shadow: 0 0 12px rgba(232, 184, 93, 0.15);
+}
+
+/* ── Filtre toggle butonu ───────────────────────────────── */
+.filter-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2px 14px 2px;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 11px;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    letter-spacing: 0.2px;
+}
+
+.filter-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.07);
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.filter-chevron {
+    font-size: 18px;
+    line-height: 1;
+    transition: transform 0.2s;
+    color: rgba(232, 184, 93, 0.6);
+    transform: rotate(90deg);
+}
+
+.filter-chevron--open {
+    transform: rotate(-90deg);
+}
+
+/* ── Filtreler paneli ──────────────────────────────────── */
+.filters-panel {
+    padding: 8px 14px 4px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.filter-section {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.filter-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.filter-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.45);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.filter-value {
+    font-size: 11px;
+    font-weight: 700;
+    color: #f0d080;
+    letter-spacing: 0.1px;
+}
+
+/* ── Dual Range Slider ─────────────────────────────────── */
+.range-slider-wrap {
+    position: relative;
+    height: 20px;
+    display: flex;
+    align-items: center;
+}
+
+/* Track base */
+.range-slider-wrap::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 99px;
+    z-index: 0;
+}
+
+/* Filled portion between thumbs */
+.range-track-fill {
+    position: absolute;
+    height: 3px;
+    background: linear-gradient(90deg, #e8b85d, #f0d080);
+    border-radius: 99px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.range-input {
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    background: transparent;
+    -webkit-appearance: none;
+    appearance: none;
+    pointer-events: none;
+    outline: none;
+    border: none;
+    z-index: 2;
+}
+
+.range-input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #f0d080;
+    border: 2px solid #0a0a12;
+    box-shadow: 0 0 6px rgba(232, 184, 93, 0.5);
+    cursor: pointer;
+    pointer-events: all;
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+.range-input::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(232, 184, 93, 0.7);
+}
+
+.range-input::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #f0d080;
+    border: 2px solid #0a0a12;
+    box-shadow: 0 0 6px rgba(232, 184, 93, 0.5);
+    cursor: pointer;
+    pointer-events: all;
 }
